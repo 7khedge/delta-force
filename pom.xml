@@ -60,6 +60,16 @@
             <artifactId>spring-jdbc</artifactId>
             <version>4.2.2.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>3.0.5.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava</artifactId>
+            <version>3.2.1</version>
+        </dependency>
     </dependencies>
 
 </project>

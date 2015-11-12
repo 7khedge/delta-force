@@ -4,10 +4,7 @@ import com.hazelcast.core.QueueStore;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class DBStoreConfig implements QueueStore<String> {
 
@@ -55,7 +52,13 @@ public class DBStoreConfig implements QueueStore<String> {
 
     @Override
     public Map<Long, String> loadAll(Collection<Long> keys) {
-        return null;
+        SQL sql = new SQL().SELECT("id,message").FROM(queueName).WHERE("status = 'PROCESSING'");
+        List<Map<String, Object>> mapList = jdbcTemplate.queryForList(sql.toString());
+        Map<Long,String> messages = new HashMap<Long, String>();
+        for(Map<String,Object> map : mapList) {
+            messages.put(Long.valueOf((Integer)map.get("id")),(String)map.get("message"));
+        }
+        return messages;
     }
 
     @Override

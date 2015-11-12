@@ -7,26 +7,37 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IQueue;
 import com.hazelcast.core.QueueStore;
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import com.sf.event.queue.DBStoreConfig;
 import com.sf.event.queue.QueueStoreConfigFactory;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+import org.apache.ibatis.jdbc.SQL;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.sql.DataSource;
+import java.util.List;
+import java.util.Map;
+
+import static com.sf.QueueHelper.dataSource;
 
 /**
  * Created by adityasofat on 08/11/2015.
  */
 public class QueueTest {
 
+    private final static String queueName = "jobEventQueue";
+
+    @AfterClass
+    public static void tearDown() {
+        shouldTruncateQueueStoreTable(queueName);
+    }
 
 
     @Test
-    public void shouldCreateQueue() {
+    public void shouldCreateQueue() throws InterruptedException {
         //Given
-        String queueName = "jobEventQueue";
         int numberOfEvents = 5;
         Config config = new Config();
         QueueStoreConfig jdbcBackedQueueConfig = QueueStoreConfigFactory.getJdbcBackedQueueConfig(dataSource(), queueName);
@@ -40,12 +51,10 @@ public class QueueTest {
         }
         IQueue<String> iQueue = hazelcastInstance.getQueue(queueName);
         MatcherAssert.assertThat(iQueue.size(), CoreMatchers.equalTo(numberOfEvents));
+        String actual = iQueue.take();
+        MatcherAssert.assertThat(actual,CoreMatchers.equalTo("0"));
         hazelcastInstance.shutdown();
-        shouldTruncateQueueStoreTable(queueName);
     }
-
-
-
 
     @Test
     public void shouldCreateQueueStore() {
@@ -80,18 +89,14 @@ public class QueueTest {
     }
 
     //@Test
-    public void shouldTruncateQueueStoreTable(String queueName) {
+    public static void shouldTruncateQueueStoreTable(String queueName) {
         //Given
         //When
         new JdbcTemplate(dataSource()).execute("TRUNCATE TABLE "+ queueName);
     }
 
-    private DataSource dataSource() {
-        MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/hazel");
-        dataSource.setUser("hazeluser");
-        dataSource.setPassword("password");
-        return dataSource;
-    }
+
+
+
 
 }
