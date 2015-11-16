@@ -27,7 +27,7 @@ public class JobDefinitionTest {
         //When
         JobDefinition jobDefinition = JobDefinitionBuilder.jobDefinition()
                 .name(jobName)
-                //.itemReader(new IntegerItemReader())
+                .itemReader(new IntegerItemReader())
                 .build();
         //Then
         MatcherAssert.assertThat(jobDefinition.getName(), CoreMatchers.equalTo(jobName));

@@ -14,6 +14,7 @@ import org.apache.ibatis.jdbc.SQL;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.AfterClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -57,6 +58,7 @@ public class QueueTest {
     }
 
     @Test
+    @Ignore
     public void shouldCreateQueueStore() {
         //Given
         String queueName = "jobEventQueue";

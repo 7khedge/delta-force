@@ -1,6 +1,9 @@
 package com.sf;
 
-import java.util.Optional;
+import com.google.common.base.Optional;
+import fj.data.List;
+
+
 
 /**
  * Created by adityasofat on 11/11/2015.
@@ -8,4 +11,6 @@ import java.util.Optional;
 public interface ItemReader<T> {
 
     Optional<T> readItem();
+
+    void setIntegerList(List<T> range);
 }

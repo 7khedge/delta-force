@@ -6,6 +6,8 @@ package com.sf;
 public class JobDefinitionBuilder {
 
     private String jobName;
+    private ItemReader integerItemReader;
+
 
     private JobDefinitionBuilder() {
 
@@ -22,5 +24,10 @@ public class JobDefinitionBuilder {
 
     public JobDefinition build() {
         return new JobDefinition(jobName);
+    }
+
+    public JobDefinitionBuilder itemReader(ItemReader integerItemReader) {
+        this.integerItemReader = integerItemReader;
+        return this;
     }
 }
