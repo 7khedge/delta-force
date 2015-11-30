@@ -1,0 +1,12 @@
+{"ApplicationInstance":[
+  {"id":1,"name":"GCD","server":"lonlx102394","port":"1023","instanceName":"ms1","Component":"restService"},
+  {"id":2,"name":"NCD","server":"lonlx102394","port":"1023","instanceName":"ms1","Component":"restService"},
+  {"id":3,"name":"CPAdmin","server":"lonlx102394","port":"1023","instanceName":"ms1","Component":"restService"},
+  {"id":4,"name":"ClientAdmin","server":"lonlx102394","port":"1023","instanceName":"ms1","Component":"restService"},
+  {"id":5,"name":"GCD","server":"lonlx202394","port":"1023","instanceName":"ms1","Component":"restService"},
+  {"id":6,"name":"NCD","server":"lon2x102394","port":"1023","instanceName":"ms1","Component":"restService"}
+  {"id":7,"name":"CPAdmin","server":"lonlx202394","port":"1023","instanceName":"ms1","Component":"restService"},
+  {"id":8,"name":"","server":"lonlx102394","port":"1023","instanceName":"ms1","Component":"restService"},
+  {"id":9,"name":"GCD","server":"lonlx102394","port":"1023","instanceName":"ms1","Component":"restService"},
+  {"id":10,"name":"GCD","server":"lonlx102394","port":"1023","instanceName":"ms1","Component":"restService"}
+]}

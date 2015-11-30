@@ -36,8 +36,9 @@ public class ChroniclePersistenceShould {
 
     @Test
     public void removePersistenceSpace() throws Exception {
-        //When
+        //Given
         chroniclePersistence.createPersistenceSpace();
+        //When
         chroniclePersistence.removePersistenceSpace();
         //Then
         assertThatDirectory(false, baseDirectory + File.separator + queueName);
@@ -50,7 +51,7 @@ public class ChroniclePersistenceShould {
     }
 
     @Test
-    public void returnQueueBasePath() throws Exception {
+    public void returnQueueDirectory() throws Exception {
         //When//Then
         assertThat(chroniclePersistence.getQueuePath(),equalTo(baseDirectory));
     }
