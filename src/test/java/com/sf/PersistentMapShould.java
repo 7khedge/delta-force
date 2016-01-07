@@ -1,5 +1,7 @@
 package com.sf;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import java.io.File;
@@ -12,6 +14,24 @@ import java.nio.channels.FileChannel;
  * Created by adityasofat on 05/01/2016.
  */
 public class PersistentMapShould {
+
+    @Test
+    public void testDeleteFile() throws IOException {
+        File file = new File("/tmp/persistentMap.map");
+        file.createNewFile();
+        RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw");
+        FileChannel fileChannel = randomAccessFile.getChannel();
+        MappedByteBuffer buffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, 0, 128 * 1 * 1);
+        buffer.put("queue00=000002".getBytes());
+        fileChannel.close();
+        randomAccessFile.close();
+        File file2 = new File("/tmp/persistentMap.map");
+        if ( file2.delete() ) {
+            System.out.println("File deleted");
+        }
+        MatcherAssert.assertThat(file2.exists(), CoreMatchers.equalTo(false));
+    }
+
 
 
     @Test
