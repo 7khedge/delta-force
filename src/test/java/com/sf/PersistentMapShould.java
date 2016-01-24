@@ -32,8 +32,6 @@ public class PersistentMapShould {
         MatcherAssert.assertThat(file2.exists(), CoreMatchers.equalTo(false));
     }
 
-
-
     @Test
     public void writePersistentMap() throws IOException {
         // Create file object

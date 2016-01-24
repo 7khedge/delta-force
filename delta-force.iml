@@ -11,8 +11,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.11" level="project" />
+    <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-all:1.3" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.6" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: io.reactivex:rxjava:1.0.10" level="project" />
@@ -46,7 +46,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.sun.java:tools:1.8.0_40-release">
         <CLASSES>
-          <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/lib/tools.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/sun/java/tools/1.8.0_40-release/tools-1.8.0_40-release.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
